@@ -1,9 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = "https://eecxsxlkbdaaawbhfnxh.supabase.co";
-const supabaseAnonKey = "sb_publishable_B0SICeYzqU81Q-frlkKG2w_A3QH7-z6";
+// Prefer standard env var names, fall back to older REACT_APP_* names, then to the existing values.
+const supabaseUrl = process.env.SUPABASE_URL || process.env.REACT_APP_SUPABASE_URL || "https://eecxsxlkbdaaawbhfnxh.supabase.co";
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.REACT_APP_SUPABASE_ANON_KEY || "sb_publishable_B0SICeYzqU81Q-frlkKG2w_A3QH7-z6";
 
-export const supabase = createClient(
-  supabaseUrl,
-  supabaseAnonKey
-);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
